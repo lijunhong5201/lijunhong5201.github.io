@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style lang="less" scoped>
+    /* // header部分样式 */
+    .header {
+      height: 60px;
+      line-height: 60px;
+      background: #fff;
+      border-bottom: 1px #ccc solid;
+      box-shadow: 0 3px 0px #eee;
+      /* // box-sizing: border-box; */
+      
+    }
+    </style>
+</head>
+<body>
+  <div>
+    <div class="header">
+      <el-row type="flex" justify="space-between" class="main">
+        <!-- logo部分 -->
+        <div class="logo">
+          <nuxt-link to="/">
+            <img src="../static/images/logo.jpg" alt />
+          </nuxt-link>
+        </div>
+        <!-- 菜单栏 -->
+        <el-row type="flex" class="nvas">
+          <nuxt-link to="/">首页</nuxt-link>
+          <nuxt-link to="/travel">旅游攻略</nuxt-link>
+          <nuxt-link to="/hotel">酒店</nuxt-link>
+          <nuxt-link to="/air">国内机票</nuxt-link>
+        </el-row>
+        <!-- 登录 -->
+        <el-row type="flex" align="middle" class="register">
+          <el-dropdown v-if="$store.state.user.userInfo.token ">
+            <el-row class="el-dropdown-link">
+              <nuxt-link to="#">
+                <img :src="$axios.defaults.baseURL+$store.state.user.userInfo.user.defaultAvatar" alt />
+                {{$store.state.user.userInfo.user.nickname}}
+              </nuxt-link>
+              <i class="el-icon-arrow-down el-icon--right"></i>
+            </el-row>
+  
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>
+                <nuxt-link to="#">个人中心</nuxt-link>
+              </el-dropdown-item>
+              <el-dropdown-item>
+                <div @click="handleLogout">退出</div>
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+          <nuxt-link to="/users/login" class="account-link" v-else>登录/注册</nuxt-link>
+        </el-row>
+      </el-row>
+    </div>
+  </div>
+   <script>
+   
+  </script>
+    
+</body>
+</html>
+
+  
